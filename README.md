@@ -1,1 +1,1 @@
-This is  simple 
+This is simple JavaScript addon for FireFox, to add keyboard navigation to www.youtube.com

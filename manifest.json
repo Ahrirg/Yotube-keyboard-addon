@@ -14,7 +14,7 @@
       },
       {
         "matches": ["*://*.youtube.com/"],
-        "js": ["Main.js"]
+        "js": ["MainSite.js"]
       }
     ],
     "permissions": ["activeTab"]
