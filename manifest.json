@@ -1,21 +1,22 @@
 {
-    "manifest_version": 3,
-    "name": "YouTube Keyboard Nav",
-    "version": "1.0",
-    "description": "Yotube keyboard navigation addon, that gives keyboard navigation to YouTube videos.",
-    "icons": {
-      "48": "icons/icon48.png"
-    },
-    "content_scripts": [
-      {
-        "exclude_matches": ["*://*.youtube.com/"],
-        "matches": ["*://*.youtube.com/*"],
-        "js": ["PlayerSites.js"]
-      },
-      {
-        "matches": ["*://*.youtube.com/"],
-        "js": ["MainSite.js"]
-      }
-    ],
-    "permissions": ["activeTab"]
+  "manifest_version": 3,
+  "name": "YouTube Keyboard Nav",
+  "version": "1.0",
+  "description": "Yotube keyboard navigation addon, that gives keyboard navigation to YouTube videos.",
+  "icons": {
+    "48": "icons/icon48.png"
+  },
+  "background": {
+    "scripts": []
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://www.youtube.com/*"],
+      "js": [
+        "Navigator.js",
+        "Main.js"
+      ]
+    }
+  ],
+  "permissions": ["activeTab", "tabs", "scripting"]
 }
