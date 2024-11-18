@@ -1,3 +1,9 @@
+
+browser.storage.local.get(["enableFeature", "bgColor"]).then(result => {
+    const enableFeature = result.enableFeature || false;
+    const bgColor = result.bgColor || "#ffffff";
+})
+
 function Print(i) {
     console.log(`Nav ${i}`);
 }
@@ -61,6 +67,10 @@ function StartPage(i, event) {
 }
 
 function Calculator(i, GlobalIndex) {
+    if (i == 0) {
+        return 0;
+    }
+
     if (GlobalIndex < 0) {
         ChangeBoder(0, 1, VideoSuggestions);
         GlobalIndex = 0;
@@ -69,6 +79,7 @@ function Calculator(i, GlobalIndex) {
 
     if (i < 0 && GlobalIndex == 0) {
         return 0;
+        
     }
 
 
@@ -78,4 +89,12 @@ function Calculator(i, GlobalIndex) {
 
     ChangeBoder(GlobalIndex + i, GlobalIndex, VideoSuggestions);
     return GlobalIndex + i;
+}
+
+function GoToCreator() 
+{
+    var href = document.querySelectorAll("ytd-video-owner-renderer")[0].getElementsByTagName("a")[0].getAttribute("href");
+    if (href != null) {
+        window.location.href = href + "/videos";
+    }
 }
