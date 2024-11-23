@@ -1,8 +1,25 @@
 
-browser.storage.local.get(["enableFeature", "bgColor"]).then(result => {
-    const enableFeature = result.enableFeature || false;
-    const bgColor = result.bgColor || "#ffffff";
-})
+var BgColor;
+
+browser.storage.local.get(["DeleteShorts", "bgColor"]).then(result => {
+    BgColor = result.bgColor || "#2586fc";
+});
+
+function DELETEShorts(){
+    console.log(`WATFDSA ${ShouldDeleteShorts}`)
+    if (ShouldDeleteShorts) {
+        var shorts = document.querySelectorAll("ytd-reel-shelf-renderer");
+        shorts.forEach(el => {
+            console.log(el);
+            el.remove();
+        });
+        shorts = document.querySelectorAll("ytd-rich-section-renderer");
+        shorts.forEach(el => {
+            console.log(el);
+            el.remove();
+        });
+    }
+}
 
 function Print(i) {
     console.log(`Nav ${i}`);
@@ -18,6 +35,7 @@ function Suggestions()
     } else {
         test = "ytd-rich-grid-media";
     }
+    //DELETEShorts();
     return document.querySelectorAll(test);
 }
 
@@ -44,18 +62,27 @@ function findPosition(obj) {
     }
 }
 
+function EmptyOut(){
+    VideoSuggestions.forEach(elemets => {
+        elemets.style.backgroundColor="";
+    })    
+}
+
 function ChangeBoder(NewIndex, IndexOld, List) {
-    List[NewIndex].style.backgroundColor = "#2586fc";
+    List[NewIndex].style.backgroundColor = BgColor;
     List[NewIndex].style.borderRadius = "13px";
     List[IndexOld].style.backgroundColor = "";
 
-    window.scroll(0, findPosition(List[NewIndex]) - 175);
-    console.log(`Dabartinis yra = ${NewIndex} VSugg = ${VideoSuggestions.length}`)
+    // window.scroll(0, findPosition(List[NewIndex]) - 175);
+    // List[NewIndex].style.
+    // console.log(List[NewIndex].querySelector("#thumbnail"))
+    List[NewIndex].querySelector("#thumbnail").scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest"})
+    console.log(`Dabartinis yra = ${NewIndex} VSugg = ${VideoSuggestions.length}, ${List}`)
 }
 
 function StartPage(i, event) {
     var href = VideoSuggestions[i].getElementsByTagName("a")[0].getAttribute("href");
-    console.log(href);
+    // console.log(href);
 
     url = "https://www.youtube.com" + href;
 

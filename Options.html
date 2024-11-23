@@ -7,13 +7,40 @@
 </head>
 <body>
     <h1>Settings</h1>
+    <div style="grid-column: 1; grid-column: 6; display: grid;">
+        <label>
+            Up key:
+            <input type="text" id="UpKey"></input>
+        </label>
+        <label>
+            Down key:
+            <input type="text" id="DownKey"></input>
+        </label>
+        <label>
+            Left key:   
+            <input type="text" id="LeftKey"></input>
+        </label>
+        <label>
+            Right key:   
+            <input type="text" id="RightKey"></input>
+        </label>
+        <label>
+            Profile key:
+            <input type="text" id="ProfileKey"></input>
+        </label>
+        <label>
+            Home key:
+            <input type="text" id="HomeKey"></input>
+        </label>
+        <label>
+            Enter key:
+            <input type="text" id="EnterKey"></input>
+        </label>
+    </div>
+    <br></br>
     <label>
-        <input type="checkbox" id="enableFeature"> Enable feature
-    </label>
-    <br>
-    <label>
-        Set background color: 
-        <input type="color" id="bgColor" />
+        Background hex color: 
+        <input type="input" id="bgColor"></input>
     </label>
     <br>
     <button id="saveSettings">Save</button>
