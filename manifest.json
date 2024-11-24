@@ -4,10 +4,7 @@
   "version": "1.0",
   "description": "Yotube keyboard navigation addon, that gives keyboard navigation to YouTube videos.",
   "icons": {
-    "48": "icons/icon48.png"
-  },
-  "background": {
-    "scripts": []
+    "48": "icons/icon.png"
   },
   "options_ui": {
     "page": "Options.html",
@@ -25,5 +22,11 @@
       ]
     }
   ],
-  "permissions": ["activeTab", "tabs", "scripting", "storage"]
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "YoutubeKeyNav@Ahrirg.com",
+      "strict_min_version": "109.0"
+    }
+  },
+  "permissions": ["storage"] 
 }

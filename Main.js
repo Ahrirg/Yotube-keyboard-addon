@@ -10,6 +10,9 @@ var MoveLeftRight = 1;
 if (window.location.href.includes("watch?") || window.location.href.includes("results?")) {
     MoveUpDown = 1;
     MoveLeftRight = 0;
+} else if (window.location.href.includes("/videos")) {
+    MoveUpDown = 4;
+    MoveLeftRight = 1;
 }
 
 const observer = new MutationObserver(function(mutations) {
@@ -97,6 +100,9 @@ document.onkeydown = function(event){
     }
     if(event.key === EnterKey){
         StartPage(GlobalIndex, event);
+    }
+    if(event.key === "l"){
+        LikeDislike(event);
     }
 }
 

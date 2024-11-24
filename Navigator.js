@@ -22,7 +22,13 @@ function DELETEShorts(){
 }
 
 function Print(i) {
-    console.log(`Nav ${i}`);
+    // console.log(`Nav ${i}`);
+}
+function LikeDislike(event)
+{
+    if (window.location.href.includes("watch?")) {
+        document.getElementsByTagName("like-button-view-model")[0].getElementsByTagName("button")[0].click();
+    }
 }
 
 function Suggestions()
@@ -71,13 +77,14 @@ function EmptyOut(){
 function ChangeBoder(NewIndex, IndexOld, List) {
     List[NewIndex].style.backgroundColor = BgColor;
     List[NewIndex].style.borderRadius = "13px";
-    List[IndexOld].style.backgroundColor = "";
+    try{
+        List[IndexOld].style.backgroundColor = "";
+    } catch (error) {
+        console.warn(`previous not found ${error}`)
+    }
 
-    // window.scroll(0, findPosition(List[NewIndex]) - 175);
-    // List[NewIndex].style.
-    // console.log(List[NewIndex].querySelector("#thumbnail"))
     List[NewIndex].querySelector("#thumbnail").scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest"})
-    console.log(`Dabartinis yra = ${NewIndex} VSugg = ${VideoSuggestions.length}, ${List}`)
+    // console.log(`Dabartinis yra = ${NewIndex} VSugg = ${VideoSuggestions.length}, ${List}`)
 }
 
 function StartPage(i, event) {
