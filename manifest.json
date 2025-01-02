@@ -4,7 +4,10 @@
   "version": "1.0",
   "description": "Yotube keyboard navigation addon, that gives keyboard navigation to YouTube videos.",
   "icons": {
-    "48": "icons/icon.png"
+    "16": "icons/icon.png",
+    "32": "icons/icon.png",
+    "48": "icons/icon.png",
+    "96": "icons/icon.png"
   },
   "options_ui": {
     "page": "Options.html",

@@ -147,6 +147,9 @@ function Calculator(i, GlobalIndex) {
         
     }
 
+    if (GlobalIndex + i < 0) {
+        return GlobalIndex;
+    }
 
     if (GlobalIndex + i >= VideoSuggestions.length - 1) {
         VideoSuggestions = Suggestions();
