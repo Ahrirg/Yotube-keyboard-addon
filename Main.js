@@ -7,6 +7,14 @@ var lastUrl = "";
 
 var MoveUpDown = 5;
 var MoveLeftRight = 1;
+try {
+    MoveUpDown = parseInt(document.getElementsByTagName("ytd-rich-item-renderer")[0].getAttribute("items-per-row"));
+    MoveLeftRight = 1;
+    console.log(`test ${MoveUpDown} ${document.getElementsByTagName("ytd-rich-item-renderer")[0].getAttribute("row")}`)
+} catch (err) {
+    MoveUpDown = 5;
+    MoveLeftRight = 1;
+}
 if (window.location.href.includes("watch?") || window.location.href.includes("results?")) {
     MoveUpDown = 1;
     MoveLeftRight = 0;
@@ -15,9 +23,10 @@ if (window.location.href.includes("watch?") || window.location.href.includes("re
     MoveLeftRight = 1;
 }
 
+
 const observer = new MutationObserver(function(mutations) {
     mutations.forEach(function(mutation) {
-    
+        console.log("CHANGED")
         if ((window.location.href.includes("watch?") || window.location.href.includes("results?"))) {
             // console.log('SlowMove');
             MoveUpDown = 1;
@@ -28,8 +37,9 @@ const observer = new MutationObserver(function(mutations) {
             MoveLeftRight = 1;
         } else {
             // console.log('FastMove');
-            MoveUpDown = 5;
+            MoveUpDown = parseInt(document.getElementsByTagName("ytd-rich-item-renderer")[0].getAttribute("items-per-row"));
             MoveLeftRight = 1;
+            console.log(`test ${MoveUpDown}`)
         }
 
         if(mutation.type === 'childList' && window.location.href != lastUrl){
@@ -105,7 +115,3 @@ document.onkeydown = function(event){
         LikeDislike(event);
     }
 }
-
-// document.addEventListener("DOMContentLoaded", () => {
-
-// })s

@@ -33,21 +33,40 @@ function LikeDislike(event)
 
 function Suggestions()
 {
+    console.log("updated");
+    var adds = document.getElementsByTagName("ytd-ad-slot-renderer");
+    for (var x = 0; x < adds.length; x++) {   
+        adds[x].parentElement.parentElement.remove();
+        console.log("ISTRYNEM" + `${x}`);
+    }
+
     var test;
     if (window.location.href.includes("results?")) {
         test = "ytd-video-renderer";
     } else if (window.location.href.includes("watch?")) {
         test = "ytd-compact-video-renderer";
     } else {
-        test = "ytd-rich-grid-media";
+        test = "ytd-rich-item-renderer";
     }
-    //DELETEShorts();
-    return document.querySelectorAll(test);
+    var List = document.getElementsByTagName(test);
+
+    // console.log(typeof List)
+    // for (var x = 0; x < List.length; x++) {
+    //     console.log(`${List[x].getElementsByTagName("ytd-ad-slot-renderer")[0] } = GAY`);
+    //     if (List[x].getElementsByTagName("ytd-ad-slot-renderer")[0] != undefined) {
+    //         delete List[x]
+    //         console.log(List[x])
+    //         console.log("praejom suda");
+    //     }
+    // }
+
+    return List;
 }
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
+
 var VideoSuggestions = Suggestions();
 async function GetInfo() {
     VideoSuggestions = Suggestions()
@@ -75,16 +94,28 @@ function EmptyOut(){
 }
 
 function ChangeBoder(NewIndex, IndexOld, List) {
-    List[NewIndex].style.backgroundColor = BgColor;
-    List[NewIndex].style.borderRadius = "13px";
+    if (NewIndex < 0) {
+        return IndexOld;
+    }
+    if (document.getElementsByTagName("ytd-ad-slot-renderer")[0] != undefined) {
+        // console.log("sudasssss" + ` ${NewIndex}`);
+        VideoSuggestions = Suggestions();
+    }
     try{
-        List[IndexOld].style.backgroundColor = "";
+        for (var x =0; x< List.length; x++) {
+            
+            List[x].style.backgroundColor = "";
+        }
     } catch (error) {
         console.warn(`previous not found ${error}`)
     }
+    
+    List[NewIndex].style.backgroundColor = BgColor;
+    List[NewIndex].style.borderRadius = "13px";
 
-    List[NewIndex].querySelector("#thumbnail").scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest"})
+    List[NewIndex].scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest"})
     // console.log(`Dabartinis yra = ${NewIndex} VSugg = ${VideoSuggestions.length}, ${List}`)
+    return NewIndex;
 }
 
 function StartPage(i, event) {
@@ -121,7 +152,7 @@ function Calculator(i, GlobalIndex) {
         VideoSuggestions = Suggestions();
     }
 
-    ChangeBoder(GlobalIndex + i, GlobalIndex, VideoSuggestions);
+    var Newindex = ChangeBoder(GlobalIndex + i, GlobalIndex, VideoSuggestions);
     return GlobalIndex + i;
 }
 
