@@ -22,7 +22,7 @@ function DELETEShorts(){
 }
 
 function Print(i) {
-    // console.log(`Nav ${i}`);
+    console.log(`Nav ${i}`);
 }
 function LikeDislike(event)
 {

@@ -1,4 +1,4 @@
-Print("LukoCode MainSiteTES");
+Print("LukoCode testign!!");
 
 GetInfo();
 var GlobalIndex = -1;
@@ -103,15 +103,28 @@ document.onkeydown = function(event){
         GlobalIndex = Calculator(MoveUpDown, GlobalIndex);
     }
     if(event.key === HomeKey){
-        window.location.href = "https://www.youtube.com"
+        var CommentBarFocused = document.getElementById("creation-box");
+        if (CommentBarFocused == null || CommentBarFocused.getAttribute("class").includes("not-focused")) {
+            window.location.href = "https://www.youtube.com"
+        }
+
     }
     if(event.key === ProfileKey){
-        GoToCreator();       
+        var CommentBarFocused = document.getElementById("creation-box");
+        if (CommentBarFocused == null || CommentBarFocused.getAttribute("class").includes("not-focused")) {
+            GoToCreator();
+        }
     }
     if(event.key === EnterKey){
-        StartPage(GlobalIndex, event);
+        var CommentBarFocused = document.getElementById("creation-box");
+        if (CommentBarFocused == null || CommentBarFocused.getAttribute("class").includes("not-focused")) {
+            StartPage(GlobalIndex, event);
+        }
     }
     if(event.key === "l"){
-        LikeDislike(event);
+        var CommentBarFocused = document.getElementById("creation-box");
+        if (CommentBarFocused == null || CommentBarFocused.getAttribute("class").includes("not-focused")) {
+            LikeDislike(event);
+        }
     }
 }
